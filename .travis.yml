@@ -3,11 +3,10 @@ language: java
 jdk:
 - oraclejdk8
 
-install: 
- - ./gradlew stage
+install: true
 
 before_script: true
 
 script:
- - ./gradlew test
+ - ./gradlew stage
 
