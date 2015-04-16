@@ -1,0 +1,52 @@
+buildscript {
+    ext {
+        springBootVersion = '1.0.0.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        maven { url 'http://dl.bintray.com/vermeulen-mp/gradle-plugins' }
+    }
+    dependencies {
+        classpath 'com.wiredforcode:gradle-heroku-plugin:1.0.0'
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
+    }
+}
+
+apply plugin: 'groovy'
+apply plugin: 'heroku'
+apply plugin: 'spring-boot'
+
+jar {
+    baseName = 'gs-spring-boot'
+    version = '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+    maven { url "http://repo.spring.io/libs-snapshot" }
+}
+
+heroku {
+    //get this from heroku
+    apiKey = 'my-api-key'
+
+    //set this on first run if you don't want a generated name
+    //appName = 'some-unique-app-name'
+
+    //set this if you are not happy with the default gradlew buildpack
+    //buildpack = 'http://somebuildpack
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: "spring-boot-starter-tomcat"
+    }
+    compile "org.springframework.boot:spring-boot-starter-jetty"
+    compile "org.springframework.boot:spring-boot-starter-actuator"
+    testCompile "org.codehaus.groovy:groovy-all:2.2.0"
+    testCompile "org.spockframework:spock-core:0.7-groovy-2.0"
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
