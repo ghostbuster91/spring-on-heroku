@@ -31,7 +31,7 @@ class HelloControllerSpec extends Specification {
                                 .run(Application.class)
                     }
                 })
-        context = future.get(60, TimeUnit.SECONDS)
+        context = future.get(120, TimeUnit.SECONDS)
     }
     void "should return Greetings from Spring Boot!"() {
         when:
