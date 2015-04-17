@@ -1,19 +1,13 @@
 buildscript {
-    ext {
-        springBootVersion = '1.0.0.RELEASE'
-    }
     repositories {
         mavenCentral()
-        maven { url 'http://dl.bintray.com/vermeulen-mp/gradle-plugins' }
     }
     dependencies {
-        classpath 'com.wiredforcode:gradle-heroku-plugin:1.0.0'
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
     }
 }
 
 apply plugin: 'groovy'
-apply plugin: 'heroku'
 apply plugin: 'spring-boot'
 
 jar {
@@ -39,17 +33,6 @@ sourceSets {
 repositories {
     mavenCentral()
     maven { url "http://repo.spring.io/libs-snapshot" }
-}
-
-heroku {
-    //get this from heroku
-    apiKey = 'my-api-key'
-
-    //set this on first run if you don't want a generated name
-    //appName = 'some-unique-app-name'
-
-    //set this if you are not happy with the default gradlew buildpack
-    //buildpack = 'http://somebuildpack
 }
 
 dependencies {
