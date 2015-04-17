@@ -1,25 +1,27 @@
-package hello;
+package hello
 
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.stereotype.Component;
+import groovy.transform.CompileStatic
+import org.springframework.cache.annotation.Cacheable
+import org.springframework.stereotype.Component
 
+@CompileStatic
 @Component
-public class WarsawPropertyProvider implements PropertyProvider {
+class WarsawPropertyProvider implements PropertyProvider {
 
     @Override
     @Cacheable("properties")
     public Property getById(Integer id) {
-        simulateSlowService();
-        return new Property(id);
+        simulateSlowService()
+        return new Property(id)
     }
 
-    // We all know that warsaw api will be very slow so it simulates real world very good ;-)
+    // We all know that warsaw api will be very slow so it simulates real world very good -)
     private void simulateSlowService() {
         try {
-            long time = 5000L;
-            Thread.sleep(time);
+            long time = 5000L
+            Thread.sleep(time)
         } catch (InterruptedException e) {
-            throw new IllegalStateException(e);
+            throw new IllegalStateException(e)
         }
     }
 

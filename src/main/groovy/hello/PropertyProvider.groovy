@@ -1,6 +1,6 @@
-package hello;
+package hello
 
-public interface PropertyProvider {
+interface PropertyProvider {
 
-    public Property getById(Integer id);
+    Property getById(Integer id)
 }
