@@ -1,5 +1,6 @@
-package hello
+package com.ghostbuster.warsawApi.provider
 
+import com.ghostbuster.warsawApi.domain.Property
 import groovy.transform.CompileStatic
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.stereotype.Component

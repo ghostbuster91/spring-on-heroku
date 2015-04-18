@@ -1,4 +1,4 @@
-package hello
+package com.ghostbuster.warsawApi
 
 import org.springframework.boot.SpringApplication
 import org.springframework.context.ConfigurableApplicationContext

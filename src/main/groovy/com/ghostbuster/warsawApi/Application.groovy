@@ -1,4 +1,4 @@
-package hello
+package com.ghostbuster.warsawApi
 
 import groovy.transform.CompileStatic;
 import org.springframework.boot.SpringApplication
