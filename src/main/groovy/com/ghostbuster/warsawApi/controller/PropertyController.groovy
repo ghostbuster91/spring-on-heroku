@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @CompileStatic
 @RestController
-class PropertiesController {
+class PropertyController {
 
     @Autowired
     private WarsawApiConsumer propertyProvider

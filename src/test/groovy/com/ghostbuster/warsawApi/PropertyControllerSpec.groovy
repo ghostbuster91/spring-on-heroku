@@ -15,10 +15,8 @@ import java.util.concurrent.Executors
 import java.util.concurrent.Future
 import java.util.concurrent.TimeUnit
 
-/**
- * Created by kasper on 4/16/15.
- */
-class HelloControllerSpec extends Specification {
+class PropertyControllerSpec extends Specification {
+
     @Shared
     @AutoCleanup
     ConfigurableApplicationContext context
@@ -34,22 +32,11 @@ class HelloControllerSpec extends Specification {
                 })
         context = future.get(120, TimeUnit.SECONDS)
     }
-    void "should return Greetings from Spring Boot!"() {
+    void "should return two properties on /search endpoint"() {
         when:
         ResponseEntity<Property[]> entity = new RestTemplate().getForEntity("http://localhost:8080/search", Property[].class)
         then:
         entity.statusCode == HttpStatus.OK
         entity.body ==  [new Property("1","123","124","nazwa1"), new Property("2","123","124","nazwa2")]
     }
-//    void "should reverse request!"() {
-//        when:
-//        ResponseEntity<String> entity = new RestTemplate().getForEntity(url, String.class)
-//        then:
-//        entity.statusCode == HttpStatus.OK
-//        entity.body == reversedString
-//        where:
-//        url || reversedString
-//        'http://localhost:8080/reverse/uno' || 'onu'
-//        'http://localhost:8080/reverse/ufc' || 'cfu'
-//    }
 }
