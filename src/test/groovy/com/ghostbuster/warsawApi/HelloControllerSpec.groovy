@@ -1,5 +1,6 @@
 package com.ghostbuster.warsawApi
 
+import com.ghostbuster.warsawApi.domain.internal.Property
 import org.springframework.boot.SpringApplication
 import org.springframework.context.ConfigurableApplicationContext
 import org.springframework.http.HttpStatus
@@ -35,10 +36,10 @@ class HelloControllerSpec extends Specification {
     }
     void "should return Greetings from Spring Boot!"() {
         when:
-        ResponseEntity entity = new RestTemplate().getForEntity("http://localhost:8080/greeting", String.class)
+        ResponseEntity<Property[]> entity = new RestTemplate().getForEntity("http://localhost:8080/search", Property[].class)
         then:
         entity.statusCode == HttpStatus.OK
-        entity.body.contains("Hello, World!")
+        entity.body ==  [new Property("1","123","124","nazwa1"), new Property("2","123","124","nazwa2")]
     }
 //    void "should reverse request!"() {
 //        when:
