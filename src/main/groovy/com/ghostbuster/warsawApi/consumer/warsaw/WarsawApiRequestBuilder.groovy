@@ -25,4 +25,8 @@ class WarsawApiRequestBuilder {
         url.append("&limit=${limit}")
         return this
     }
+
+    String built(){
+        return url.toString()
+    }
 }
