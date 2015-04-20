@@ -28,4 +28,11 @@ class WarsawApiRequestBuilderSpec extends Specification {
         expect:
         builder.built().contains('&limit=5')
     }
+
+    def "Shoould return proper url"(){
+        given:
+        def builder = WarsawApiRequestBuilder.forPropertyPurchase().limitResults(5)
+        expect:
+        builder.built() == 'https://api.um.warszawa.pl/api/action/wfsstore_get/?id=baa1d9c9-4a90-401d-b215-57b1ed09e694&apikey=f466c384-f5cc-4787-af44-1468697daf47&limit=5'
+    }
 }
