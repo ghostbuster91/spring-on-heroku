@@ -5,7 +5,8 @@ import groovy.transform.CompileStatic
 
 @CompileStatic
 @JsonIgnoreProperties(ignoreUnknown = true)
-class Coordinate {
-    Double latitude
-    Double longitude
+class KeyValue {
+
+    String value
+    String key
 }

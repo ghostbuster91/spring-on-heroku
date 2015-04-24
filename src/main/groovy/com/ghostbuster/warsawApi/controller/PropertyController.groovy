@@ -16,7 +16,7 @@ class PropertyController {
     private WarsawApiConsumer propertyProvider
 
     @RequestMapping('/search')
-    public List<Property> search(@RequestParam(value="school", defaultValue="1") Integer school, @RequestParam(value="metro", defaultValue="1") Integer metro){
-        return [new Property("1","123","124","nazwa1"), new Property("2","123","124","nazwa2")]
+    public List<Property> search(@RequestParam(value="school", required = false) Integer school, @RequestParam(value="metro", required = false) Integer metro){
+        return propertyProvider.getById('1')
     }
 }

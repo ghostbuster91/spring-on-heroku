@@ -1,5 +1,7 @@
 package com.ghostbuster.warsawApi
 
+import com.ghostbuster.warsawApi.consumer.warsaw.WarsawApiRequestBuilder
+import com.ghostbuster.warsawApi.domain.external.warsaw.Response
 import com.ghostbuster.warsawApi.domain.internal.Property
 import org.springframework.boot.SpringApplication
 import org.springframework.context.ConfigurableApplicationContext
@@ -37,6 +39,8 @@ class PropertyControllerSpec extends Specification {
         ResponseEntity<Property[]> entity = new RestTemplate().getForEntity("http://localhost:8080/search", Property[].class)
         then:
         entity.statusCode == HttpStatus.OK
-        entity.body ==  [new Property("1","123","124","nazwa1"), new Property("2","123","124","nazwa2")]
+        entity.body.length == 5
     }
+
+
 }
