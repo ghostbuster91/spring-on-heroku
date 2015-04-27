@@ -1,8 +1,6 @@
-package com.ghostbuster.warsawApi
+package com.ghostbuster.springOnHeroku
 
-import com.ghostbuster.warsawApi.consumer.warsaw.WarsawApiRequestBuilder
-import com.ghostbuster.warsawApi.domain.external.warsaw.Response
-import com.ghostbuster.warsawApi.domain.internal.Property
+import com.ghostbuster.springOnHeroku.model.Greeting
 import org.springframework.boot.SpringApplication
 import org.springframework.context.ConfigurableApplicationContext
 import org.springframework.http.HttpStatus
@@ -17,7 +15,7 @@ import java.util.concurrent.Executors
 import java.util.concurrent.Future
 import java.util.concurrent.TimeUnit
 
-class PropertyControllerSpec extends Specification {
+class GreetingControllerSpec extends Specification {
 
     @Shared
     @AutoCleanup
@@ -34,12 +32,13 @@ class PropertyControllerSpec extends Specification {
                 })
         context = future.get(120, TimeUnit.SECONDS)
     }
-    void "should return two properties on /search endpoint"() {
+
+    void "should return default greeting on /greeting endpoint"() {
         when:
-        ResponseEntity<Property[]> entity = new RestTemplate().getForEntity("http://localhost:8080/search", Property[].class)
+        ResponseEntity<Greeting> entity = new RestTemplate().getForEntity("http://localhost:8080/greeting", Greeting)
         then:
         entity.statusCode == HttpStatus.OK
-        entity.body.length == 5
+        entity.body == new Greeting('Hello World!!')
     }
 
 
