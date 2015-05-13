@@ -38,7 +38,7 @@ class GreetingControllerSpec extends Specification {
         ResponseEntity<Greeting> entity = new RestTemplate().getForEntity("http://localhost:8080/greeting", Greeting)
         then:
         entity.statusCode == HttpStatus.OK
-        entity.body == new Greeting('Hello World!!')
+        entity.body == new Greeting('Hello, World!')
     }
 
 
