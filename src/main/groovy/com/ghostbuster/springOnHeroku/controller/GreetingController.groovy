@@ -31,7 +31,7 @@ class GreetingController {
     public HttpEntity<Greeting> greeting(
             @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
 
-        Greeting greeting = greetingRepository.getGreeting()
+        Greeting greeting = greetingRepository.getGreeting(String.format(TEMPLATE, name))
 
         greeting.add(createLinkToGreeting(name))
 

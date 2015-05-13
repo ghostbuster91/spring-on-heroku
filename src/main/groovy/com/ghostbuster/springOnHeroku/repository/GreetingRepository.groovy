@@ -9,9 +9,9 @@ class GreetingRepository {
 
     @Override
     @Cacheable("someCache")
-    public Greeting getGreeting() {
+    public Greeting getGreeting(String name) {
         simulateSlowService();
-        return new Greeting()
+        return new Greeting(name)
     }
 
     // Don't do this at home
